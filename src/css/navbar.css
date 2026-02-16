@@ -75,13 +75,14 @@
 .home-navbar .navbar-container .header-frame .detail .wel-txt {
   width: 510px;
   height: 42px;
-
+  
   font-family: "Roboto Serif";
   font-size: 36px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.54px;
+  color: #D7B686;
 }
 
 .home-navbar .navbar-container .header-frame .detail .service-txt {

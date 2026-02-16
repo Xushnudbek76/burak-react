@@ -12,7 +12,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { CssBaseline } from "@mui/material";
 import "./css/index.css";
+
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
@@ -21,6 +23,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
+        <CssBaseline/>
         <Router>
           <App />
         </Router>
