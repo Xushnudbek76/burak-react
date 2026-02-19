@@ -35,7 +35,7 @@ export default function Events() {
             return (
               <SwiperSlide key={number} className={"events-info-frame"}>
                 <div className={"events-img"}>
-                  <img src={value.img} className={"events-img"} />
+                  <img src={value.img} className={"events-img"} alt="" />
                 </div>
                 <Box className={"events-desc"}>
                   <Box className={"events-bott"}>

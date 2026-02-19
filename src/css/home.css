@@ -130,6 +130,14 @@
   min-width: 290px;
   cursor: pointer;
 }
+.homepage .new-dishes-frame .new-dishes-section .card .product-volume {
+  position: absolute;
+  z-index: 3;
+  width: 93px;
+  height: 29px;
+  margin-top: 11px;
+  margin-left: 15px;
+}
 .homepage .new-dishes-frame .new-dishes-section  .cards-frame {
   width: 100%;
   margin-top: 43px;
@@ -160,6 +168,8 @@
   transform: scale(1.5);
   overflow: hidden;
 }
+
+/* ACTIVE USERS */
 
 .active-users-frame {
     width: 100%;

@@ -3,6 +3,7 @@ import { Box, Card,  Container, Stack, Typography } from "@mui/joy";
 import { CardCover, CssVarsProvider } from "@mui/joy";
 import { CardContent } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import Divider from "../../components/divider";
 
 
 
@@ -24,6 +25,7 @@ export default function NewDishes() {
             return (
                 <CssVarsProvider key={i}>
                  <Card sx={{p: 0}} className="card" >
+                  <img className="product-volume" src="/icons/product-volume.png" alt="" />
                   <CardCover>
                     <img src={e.imagePath} alt="" />
                   </CardCover>
@@ -33,8 +35,10 @@ export default function NewDishes() {
                        <Stack  flexDirection={"row"}
                        justifyContent={"space-between"}
                        >
-                       <Typography level="h3" fontSize="md" textColor={'#25272D'} mb={1}>
+                       <Typography display={"flex"} gap={'8px'} level="h3" fontSize="md" textColor={'#25272D'} mb={1}>
                         {e.productName}
+                        <Divider  height="24" width="2" bg="#D9D9D9"/>
+                        $7
                        </Typography>
                        <Typography sx={{fontWeight: "md", color: "#343434", alignItems: "center", display:"flex"}}> 
                         12
