@@ -1,0 +1,342 @@
+.products-page {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background: #f8f8ff;
+}
+
+.products-page .main-text {
+    font-family: Roboto Serif;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+.products-page .avatar-big-box {
+    width: 820px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-left: 360px;
+    margin-top: 77px;
+}
+.products-page .dishes-filter-section {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    align-items: flex-end;
+    margin:62px 0px 20px 890px;
+}
+
+/* LIST CATEGORY */
+.products-page .list-category-section {
+    flex-direction: row;
+    width: 100%;
+    min-height: 600px;
+}
+
+.products-page .list-category-section .buttons {
+    margin-top: 50px;
+}
+
+.products-page .list-category-section .buttons button{
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    width: 36px;
+    padding: 8px 4px;   
+    min-width: 0;  
+}
+.products-page .card-img {
+    height: 275px;
+}
+.products-page .list-category-section .cards {
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+    margin-left: 25px;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 30px;
+}
+.products-page .list-category-section .cards .product-name {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+.products-page .list-category-section .cards .price {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #E3C08D;
+    column-gap: 5px;
+}
+.products-page .list-category-section .cards .card {
+    border: none;
+    position: relative;
+    overflow: visible !important;
+}
+.products-page .list-category-section .cards .card .card-img {
+  border-radius: 0 50px 0 0;
+
+}
+.products-page .list-category-section .cards .card:hover .card-img{
+ filter: brightness(50%);
+  transition: 0.3s;
+}
+.products-page .list-category-section .cards .card .product-volume {
+  position: absolute;
+  z-index: 3;
+  width: 90px;
+  height: 30px;
+  margin-top: 11px;
+}
+.products-page .list-category-section .cards .card .hover {
+    position: absolute;
+    bottom: 90px;
+    left: 90px;
+    display: flex;
+    column-gap: 27px;
+    align-items: center;
+    z-index: 3;
+    opacity: 0;
+    transition: 0.3s;
+    
+}
+.products-page .list-category-section .cards .card:hover .hover {
+    opacity: 1;
+}
+
+.products-page .pagination-section {
+    margin-top: 40px;
+    margin-bottom: 53px;
+}
+
+.family-brand  {
+    height: 630px;
+    width: 1293px;
+    background: #0D1518;
+}
+
+.brands-logo {
+    width: 100%;
+    background: #0D1518;
+    display: flex;
+    justify-content: center;
+}
+.family-brand .brand{
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    margin-top: 84px;
+    margin-bottom: 59px;
+}
+.family-brand .card {
+    background-color: #0D1518;
+    width: 258px;
+    height: 350px;
+    border: none;
+    box-shadow: 1px 1px 15px 1px  #E4D4D4;
+}
+
+.address .title{
+font-family: Roboto Serif;
+font-weight: 600;
+font-style: SemiBold;
+font-size: 36px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+margin-top: 80px;
+margin-bottom: 80px;
+}
+
+.address .address-area {
+    margin-bottom: 60px;
+}
+
+
+
+/** ChosenProduct **/
+
+.products-page .chosen-product {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background: #f8f8ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.products-page .chosen-product .product-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 80px;
+  margin-bottom: 150px;
+}
+
+.products-page .chosen-product .chosen-product-slider {
+  width: 48%;
+  height: 480px;
+  background: #ffffff;
+  box-shadow: 9px 13px 14px 5px rgba(0, 0, 0, 0.25),
+    inset -1px 2px 10px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.products-page .chosen-product .chosen-product-slider .swiper-area {
+  --swiper-navigation-color: #fff;
+  --swiper-pagination-color: #fff;
+  width: 100%;
+  height: 1020px;
+}
+
+.products-page
+  .chosen-product
+  .chosen-product-slider
+  .swiper-area
+  .slider-image {
+  width: 100%;
+  height: 100%;
+}
+
+.products-page .chosen-product .chosen-product-info {
+  padding: 30px 40px;
+  width: 49%;
+  height: 480px;
+  display: flex;
+  background: #ffffff;
+  box-shadow: 9px 13px 14px 5px rgba(0, 0, 0, 0.25),
+    inset -1px 2px 10px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+}
+
+.products-page .chosen-product .chosen-product-info .info-box {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.products-page .chosen-product .info-box .product-name {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+  color: #000000;
+}
+
+.products-page .chosen-product .info-box .resto-name {
+  margin-top: 16px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 15px;
+  color: #979797;
+}
+
+.products-page .chosen-product .info-box .rating-box {
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.products-page .chosen-product .rating-box .star-box {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.products-page .chosen-product .rating-box .evaluation-box {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.products-page .chosen-product .rating-box .evaluation-box .product-view {
+  display: flex;
+  align-items: center;
+}
+
+.products-page .chosen-product .info-box .product-desc {
+  height: 112px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+}
+
+.products-page .chosen-product .info-box .product-price {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.products-page .chosen-product .product-price span {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 22px;
+  color: #000000;
+}
+
+.products-page .chosen-product .button-box {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.products-page .chosen-product .button-box button {
+  width: 230px;
+  height: 44px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 22px;
+  color: #f8f8ff;
+}
+
+.products-page .chosen-product .title {
+  font-family: "Dancing Script";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 43px;
+  margin-top: 40px;
+}
