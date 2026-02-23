@@ -1,0 +1,137 @@
+.order-page {
+    position: relative;
+    height: auto;
+    background:  #f8f8ff;
+    width: 100%;
+}
+
+.order-page .order-main-box {
+    height: 100% ;
+    width: 821px;
+    border-radius: 8px;
+    margin-top: 15px;
+    background-color: #f3f3f7;
+    border-radius: 10px;
+    padding-left: 40px;
+    padding-top: 21px;
+     box-shadow: inset  0px  0px 10px 10px  #BCBCBF, -10px 10px 10px 1px rgba(0, 0, 0, 0.15);
+}
+
+.order-page .order-main-box .order-dish-img {
+    width: 50px;
+    height: 47px;
+    border-radius: 29px;
+}
+
+.order-page .order-main-box .orders-name-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 8px;
+    width: 660px;
+    height: 47px;
+}
+
+.order-page .order-main-box .orders-name-price .price-box {
+    display: flex;
+    align-items: center;
+}
+
+.order-page .order-main-box .orders-name-price .img-name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.order-page .order-main-box .orders-name-price .img-name .title-dish {
+    font-family: Commissioner;
+    font-weight: 600;
+    font-style: Medium;
+    font-size: 22px;
+    line-height: 36px;
+    letter-spacing: 0%;
+
+}
+
+.order-page .order-main-box .proceed {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+    margin-top: 10px;
+}
+.order-page .order-main-box .calc {
+    display: flex;
+    align-items: center;
+    width: 474px;
+    justify-content: space-between;
+}
+
+
+.order-page .order-main-box .order-btn {
+    width: 90px;
+    height: 36px;
+}
+.order-page .order-right {
+    margin-top: 90px;
+    margin-bottom: 363px;
+
+}
+.order-page .user-detail {
+    position: relative;
+    width: 372px;
+    height: 308px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: inset  0px  0px 10px 10px  #BCBCBF, 5px 6px 5px 1px #BCBCBF;
+}
+.order-page .user-detail .user {
+    width: 117px;
+    height: 112px;
+}
+.order-page .user-name {
+    font-family: Commissioner;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: 0%;
+
+}
+.order-page .cont{
+    display: flex;
+    flex-direction: row;
+    margin-top: 51px;
+}
+
+.order-page .user-type {
+    font-family: Commissioner;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 20px;
+    line-height: 36px;
+    letter-spacing: 0%;
+    color: #A1A1A1;
+}
+.order-page .badge {
+    position: absolute;
+    top: 100px;
+    left: 215px;
+}
+.order-page .card-info {
+    width: 372px;
+    height: 282px;
+    box-shadow: inset  0px  0px 10px 10px  #BCBCBF, 5px 6px 5px 1px #BCBCBF;
+    margin-top: 23px;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.order-page .MuiOutlinedInput-root {
+    border-radius: 10px;
+}
