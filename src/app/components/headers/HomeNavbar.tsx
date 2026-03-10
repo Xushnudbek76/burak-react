@@ -1,9 +1,13 @@
 import { Box, Button, Container, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
+import { useState } from "react";
 
 export default function HomeNavbar() {
     const authMember = true;
+
+    const [count, setCount] = useState<number>(0);
+    
     return <div className="home-navbar">
         <Container className="navbar-container">
             <Stack className="menu"
