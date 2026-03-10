@@ -8,9 +8,7 @@ import { ThemeProvider } from "@emotion/react";
 import theme from "./app/MaterialTheme";
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+
 } from "react-router-dom";
 import { CssBaseline } from "@mui/material";
 import "./css/index.css";
