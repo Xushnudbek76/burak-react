@@ -6,6 +6,7 @@ export interface Member {
   memberStatus: MemberStatus;
   memberNick: string;
   memberPassword?: string;
+  memberPhone: string;
   memberAddress: string;  
   memberDesc?: string;
   memberImage?: string;
