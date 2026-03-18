@@ -14,6 +14,7 @@ import { serverApi } from "../../../lib/config";
 import { ProductCollection } from "../../../lib/enums/product.enums";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { CartItem } from "../../../lib/types/search";
 
 
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -23,9 +24,12 @@ const productsRetriever = createSelector(retrieveProducts, (products) => ({
   products,
 }));
 
+interface ProductsProps {
+  onAdd: (item: CartItem) => void;
+}
 
-export default function Products (){
-
+export default function Products (props: ProductsProps){
+  const {onAdd} = props;
   const {setProducts} = actionDispatch(useDispatch());
   const {products} = useSelector(productsRetriever);
   const [productSearch, setProductSearch] = useState<ProductInquiry>({
@@ -194,7 +198,17 @@ export default function Products (){
                         <CssVarsProvider key={e._id} >
                     <Card onClick={() => chooseDishHandler(e._id)} className= "card" sx={{width: '273px', height: "361px"}}>
                         <Box className='hover'>
-                            <img style={{cursor:'pointer'}} src="/icons/fullcart.png" alt="" />
+                            <img style={{cursor:'pointer'}} src="/icons/fullcart.png" alt="" onClick={(a) => {
+                              onAdd({
+                                _id: e._id,
+                                quantity: 1,
+                                name: e.productName,
+                                // @ts-ignore
+                                price: e.productPrice,
+                                image: e.productImages[0]
+                              });
+                              a.stopPropagation();
+                            }}/>
                             <img src="/icons/views.png" alt="" />
                         </Box>
                         <img className="product-volume" src="/icons/product-volume.png" alt="" />

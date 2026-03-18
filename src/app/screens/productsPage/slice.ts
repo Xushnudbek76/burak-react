@@ -27,4 +27,4 @@ export const {setRestaurant, setChosenProduct, setProducts} = productsPageSlice.
 
 const ProductsPageReducer = productsPageSlice.reducer;
 
-export default  ProductsPageReducer
+export default  ProductsPageReducer;
