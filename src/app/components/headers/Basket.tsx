@@ -113,7 +113,7 @@ export default function Basket(props: BasketProps) {
                 <div className={"cancel-btn"}>
                   <CancelIcon color={"primary"} onClick={() => onDelete(item)}/>
                 </div>
-                <img src={"/img/fresh.webp"} className={"product-img"} />
+                <img src={imagePath} className={"product-img"} />
                 <span className={"product-name"}>{item.name}</span>
                 <p className={"product-price"}>${item.price} x {item.quantity}</p>
                 <Box sx={{ minWidth: 120 }}>

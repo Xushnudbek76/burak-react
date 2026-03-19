@@ -25,13 +25,13 @@ import { useGlobals } from "./hooks/useGlobals";
 function App() {
   const location = useLocation();
   const {setAuthMember} = useGlobals();
-  const {cartItems, onAdd, onDelete, onRemove, onDeleteAll,} = useBasket();
-  const {signupOpen, setSignupOpen} = useState<boolean>(false);
-  const {loginOpen, setLoginOpen} = useState<boolean>(false);
+  const {cartItems, onAdd, onDelete, onRemove, onDeleteAll} = useBasket();
+  const [signupOpen, setSignupOpen] = useState<boolean>(false);
+  const [loginOpen, setLoginOpen] = useState<boolean>(false);
   const [anchorEl, setEnchorEl] = useState<HTMLElement | null>(null);
 // Handlers
-const handleSignupClose = setSignupOpen(false); 
-const handleLoginClose = setLoginOpen(false); 
+const handleSignupClose = () => setSignupOpen(false); 
+const handleLoginClose =  () => setLoginOpen(false); 
 const handleLogoutClick = (e: T) => {
   setEnchorEl(e.currentTarget);
 }
@@ -58,12 +58,21 @@ onRemove={onRemove} onDelete={onDelete} onDeleteAll={onDeleteAll}
 setSignupOpen= {setSignupOpen}
 setLoginOpen= {setLoginOpen}
 anchorEl={anchorEl}
-handleLogoutClick={handleLogoutClick};
-handleCloseLogout={handleCloseLogout};
-handleLoginRequest={handleLogoutRequest};
-></HomeNavbar> : <OtherNavbar cartItems={cartItems} onAdd={onAdd}
-onRemove={onRemove} onDelete={onDelete} onDeleteAll={onDeleteAll} setSignupOpen= {setSignupOpen}
-setLoginOpen= {setLoginOpen}
+handleLogoutClick={handleLogoutClick}
+handleCloseLogout={handleCloseLogout}
+handleLogoutRequest={handleLogoutRequest}
+></HomeNavbar> : <OtherNavbar 
+  cartItems={cartItems}
+  onAdd={onAdd}
+  onRemove={onRemove}
+  onDelete={onDelete}
+  onDeleteAll={onDeleteAll}
+  setSignupOpen={setSignupOpen}
+  setLoginOpen={setLoginOpen}
+  handleLogoutClick={handleLogoutClick}
+  anchorEl={anchorEl}
+  handleCloseLogout={handleCloseLogout}
+  handleLogoutRequest={handleLogoutRequest}
 ></OtherNavbar>}
         <Switch>
           <Route path="/products">

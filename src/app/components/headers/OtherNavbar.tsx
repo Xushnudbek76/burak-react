@@ -72,7 +72,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
                  onAdd={onAdd}
 onRemove={onRemove} onDelete={onDelete} onDeleteAll={onDeleteAll}
                 />  
-                {!authMember ? (<Box className={"hover-line"}><Button variant="contained" className="login-button" onClick={() => setLoginOpen(true)}>Login</Button></Box>) : 
+                {!authMember ? (<Box ><Button variant="contained" className="login-button"  onClick={() => setLoginOpen(true)}>Login</Button></Box>) : 
                 // eslint-disable-next-line jsx-a11y/role-supports-aria-props
                 (<img className="user-avatar"
                 src={authMember?.memberImage ? `${serverApi}/${authMember?.memberImage}` : "/icons/default-user.svg"}  alt="user img"

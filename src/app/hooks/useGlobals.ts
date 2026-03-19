@@ -1,20 +1,21 @@
-import { createContext } from "vm";
+import { createContext, useContext } from "react";
 import { Member } from "../../lib/types/member";
-import { useContext } from "react";
 
 interface GlobalInterface {
-    authMember: Member | null;
-    setAuthMember: (member: Member | null) => void;
+  authMember: Member | null;
+  setAuthMember: (member: Member | null) => void;
 }
-// @ts-ignore
+
 export const GlobalContext = createContext<GlobalInterface | undefined>(
-    undefined
-)
+  undefined
+);
 
-export const useGlobals = () => {
-    // @ts-ignore
+export const useGlobals = (): GlobalInterface => {
+  const context = useContext(GlobalContext);
 
-    const context = useContext(GlobalContext);
-    if(context === undefined) throw new Error("useGlobals with it provider");
-    return context;
+  if (context === undefined) {
+    throw new Error("useGlobals must be used within GlobalProvider");
+  }
+
+  return context;
 };
