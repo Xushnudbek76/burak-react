@@ -64,10 +64,10 @@ const handlePassword = (e: T) => {
 }
 
 const handlePasswordKeyDown = (e: T) => {
-  if (e.key === "ENTER" && signupOpen) {
+  if (e.key === "Enter" && signupOpen) {
     handleSignupRequest().then()
-  } else if(e.key === 'ENTER' && loginOpen) {
-
+  } else if(e.key === 'Enter' && loginOpen) {
+    handleLoginRequest().then()
   }
 }
 
