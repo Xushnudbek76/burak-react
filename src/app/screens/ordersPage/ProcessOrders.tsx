@@ -1,30 +1,50 @@
 import { TabPanel } from "@mui/lab";
 import { Box, Button, Stack } from "@mui/material";
+import { createSelector } from "reselect";
+import { retrieveProcessOrders } from "./selector";
+import { useSelector } from "react-redux";
+import { Order, OrderItem } from "../../../lib/types/order";
+import { Product } from "../../../lib/types/product";
+import { serverApi } from "../../../lib/config";
+
+
+
+
+const processOrdersRetriever = createSelector(
+  retrieveProcessOrders,
+  (processOrders) => ({ processOrders})
+);
 
 export default function ProcessOrders () {
+    const {processOrders} = useSelector(processOrdersRetriever);
+  
     return (
         <TabPanel value="2">
              <Stack>
-                    {[1, 2, ].map((ele, index) => {
+                    {processOrders?.map((order: Order) => {
                       return (
-                        <Box key={index} className={"order-main-box"}>
+                        <Box key={order._id} className={"order-main-box"}>
                           <Box className={"order-box-scroll"}>
-                            {[1, 2].map((ele2, index2) => {
+                            {order?.orderItems.map((item: OrderItem) => {
+                  const product: Product = order.productData.filter(
+                    (ele: Product) => item.productId === ele._id
+                  )
+                  const imagePath = `${serverApi}/${product.productImages[0]}`
                               return (
-                                <Box key={index2} className={"orders-name-price"}>
+                                <Box key={item.id} className={"orders-name-price"}>
                                     <Box className="img-name">
                                   <img
                                     src={"/img/lavash.webp"}
                                     className={"order-dish-img"}
                                   />
-                                  <p className={"title-dish"}>Lavash</p>
+                                  <p className={"title-dish"}>{product.productName}</p>
                                    </Box>
                                   <Box className={"price-box"}>
-                                    <p>$9</p>
+                                    <p>${item.itemPrice}</p>
                                     <img src={"/icons/close.svg"} />
-                                    <p>2</p>
+                                    <p>{item.itemQuantity}</p>
                                     <img src={"/icons/pause.svg"} />
-                                    <p style={{ marginLeft: "15px" }}>$24</p>
+                                    <p style={{ marginLeft: "15px" }}>${item.itemQuantity * item.itemPrice}</p>
                                   </Box>
                                 </Box>
                               );
@@ -33,13 +53,13 @@ export default function ProcessOrders () {
                           <Box className='proceed'>
                             <Box className='calc'>
                             <p className="pricing">Product price</p>
-                            <p>$60</p>
+                            <p>${order.orderTotal - order.orderDelivery}</p>
                             <img src="/icons/plus.svg" alt="" />
                             <p>Delivery cost</p>
-                            <p>$5</p>
+                            <p>${order.orderDelivery}</p>
                             <img src="/icons/pause.svg" alt="" />
                             <p>Total</p>
-                            <p>$20</p>
+                            <p>${order.orderTotal}</p>
                            
                             </Box>
             
