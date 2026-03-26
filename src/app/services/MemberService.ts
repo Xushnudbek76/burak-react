@@ -43,8 +43,7 @@ class MemberService {
             console.log("Error, signup", error)
             throw error
         }
-    }
-
+    } 
     
     public async login(input: LoginInput): Promise<Member> {
         try {
