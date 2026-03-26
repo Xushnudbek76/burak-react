@@ -4,7 +4,6 @@ import { SyntheticEvent, useEffect, useState } from "react";
 import PausedOrders from "./PausedOrders";
 import ProcessOrders from "./ProcessOrders";
 import FinishedOrders from "./FinishedOrders";
-import "../../../css/orders.css"
 import Divider from "../../components/divider";
 import { Dispatch } from "@reduxjs/toolkit";
 import { Order, OrderInquiry } from "../../../lib/types/order";
@@ -12,6 +11,11 @@ import { setFinishedOrder, setPausedOrders, setProcessOrders } from "./slice";
 import { useDispatch } from "react-redux";
 import { OrderStatus } from "../../../lib/enums/order.enum";
 import OrderService from "../../services/OrderService";
+import { useGlobals } from "../../hooks/useGlobals";
+import "../../../css/orders.css"
+import { useHistory } from "react-router-dom";
+import { serverApi } from "../../../lib/config";
+import { MemberType } from "../../../lib/enums/member.enum";
 
 
     const actionDispatch = (dispatch: Dispatch) => ({
@@ -24,19 +28,21 @@ import OrderService from "../../services/OrderService";
 
 
 export default function OrdersPage() {
-    const { setPausedOrders, setProcessOrders, setFinishedOrder} = actionDispatch(useDispatch)
+    const dispatch = useDispatch();
+    const { setPausedOrders, setProcessOrders, setFinishedOrder} = actionDispatch(dispatch)
     
     const [orderInquiry, setOrderInquiry] = useState<OrderInquiry>({
         page: 1,
         limit: 5,
         orderStatus: OrderStatus.PAUSE
     });
-
+    const { orderBuilder, authMember } = useGlobals();
+    const history = useHistory();
     useEffect(() => {
         const order = new OrderService();
         order
         .getMyOrders({...orderInquiry, orderStatus: OrderStatus.PAUSE})
-        .then((data) => setPausedOrders(data))
+        .then((data) =>{ console.log("PAUSE DATA:", data); setPausedOrders(data)})
         .catch((err) => console.log(err))
         order
         .getMyOrders({...orderInquiry, orderStatus: OrderStatus.PROCESS})
@@ -46,12 +52,14 @@ export default function OrdersPage() {
         .getMyOrders({...orderInquiry, orderStatus: OrderStatus.FINISH})
         .then((data) => setFinishedOrder(data))
         .catch((err) => console.log(err))
-    }, [orderInquiry]);
+    }, [orderInquiry, orderBuilder]);
 
     const [value, setValue] = useState('1');
     const handleChange = (e: SyntheticEvent, newValue: string) => {
         setValue(newValue);
     }
+      if(!authMember) history.push("/");
+
     return (
         <div className="order-page">
             <Container className="cont">
@@ -73,8 +81,8 @@ export default function OrdersPage() {
           </Box>
 
           <Stack className={"order-main-content"}>
-            <PausedOrders />
-            <ProcessOrders />
+            <PausedOrders setValue={setValue} />
+            <ProcessOrders setValue={setValue} />
             <FinishedOrders />
           </Stack>
         </TabContext>
@@ -85,16 +93,19 @@ export default function OrdersPage() {
 
                         
                         <Box textAlign={'center'}>
-                            <img className="badge" src="/icons/user-badge.svg" alt="" />
-                            <img className="user" src="/icons/default-user.svg" alt="" /> 
-                        <Typography className="user-name">Martin</Typography>
-                        <p className="user-type">User</p>
+                            <img className="badge" src={
+                                                  authMember?.memberType === MemberType.RESTAURANT 
+                                                  ? "/icons/restaurant.svg"
+                                                  : "/icons/user-badge.svg"} alt="" />
+                            <img className="user" src={authMember?.memberImage ? `${serverApi}/${authMember.memberImage}` : "icons/default-user.svg"} alt="" /> 
+                        <Typography className="user-name">{authMember?.memberNick}</Typography>
+                        <p className="user-type">{authMember?.memberType}</p>
                         </Box>
                         <Box>
                             <Divider height="1" width="332" bg="#A1A1A1"/>
                             <Box display={'flex'} columnGap={'8px'}>
                             <img src="/icons/location.svg" alt="" />
-                            <p>Do not exist</p>
+                            <p>{authMember?.memberAddress ?? "Do not exist"}</p>
                             </Box>
                         </Box>
                         </Box>

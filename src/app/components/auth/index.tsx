@@ -108,7 +108,7 @@ const handleLoginRequest = async () => {
       memberNick !== "" &&
       memberPassword !== "";
 
-    if (isFulfill) throw new Error(Messages.error3);
+    if (!isFulfill) throw new Error(Messages.error3);
 // @ts-ignore
     const logInput: LoginInput = {
       memberNick: memberNick,
