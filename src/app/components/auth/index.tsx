@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import { Fab, Stack, TextField } from "@mui/material";
+import { Fab, Stack, TextField, useMediaQuery, useTheme } from "@mui/material";
 import styled from "styled-components";
 import LoginIcon from "@mui/icons-material/Login";
 import { Messages } from "../../../lib/config";
@@ -46,85 +46,81 @@ interface AuthenticationModalProps {
 export default function AuthenticationModal(props: AuthenticationModalProps) {
   const { signupOpen, loginOpen, handleSignupClose, handleLoginClose } = props;
   const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [memberNick, setMemberNick] = useState<string>("");
   const [memberPhone, setMemberPhone] = useState<string>("");
   const [memberPassword, setMemberPassword] = useState<string>("");
-  const {setAuthMember} = useGlobals();
-  /** HANDLERS **/
-const handleUsername = (e: T) => {
-  setMemberNick(e.target.value);
-}
-const handlePhone = (e: T) => {
-  setMemberPhone(e.target.value);
-}
+  const { setAuthMember } = useGlobals();
 
-const handlePassword = (e: T) => {
-  setMemberPassword(e.target.value);
-}
+  const handleUsername = (e: T) => {
+    setMemberNick(e.target.value);
+  };
 
-const handlePasswordKeyDown = (e: T) => {
-  if (e.key === "Enter" && signupOpen) {
-    handleSignupRequest().then()
-  } else if(e.key === 'Enter' && loginOpen) {
-    handleLoginRequest().then()
-  }
-}
+  const handlePhone = (e: T) => {
+    setMemberPhone(e.target.value);
+  };
 
-const handleSignupRequest = async () => {
-  try {
-    console.log("inputs:", memberNick, memberPhone, memberPassword);
+  const handlePassword = (e: T) => {
+    setMemberPassword(e.target.value);
+  };
 
-    const isFulfill =
-      memberNick !== "" &&
-      memberPhone !== "" &&
-      memberPassword !== "";
+  const handlePasswordKeyDown = (e: T) => {
+    if (e.key === "Enter" && signupOpen) {
+      handleSignupRequest().then();
+    } else if (e.key === "Enter" && loginOpen) {
+      handleLoginRequest().then();
+    }
+  };
 
-    if (isFulfill) throw new Error(Messages.error3);
-// @ts-ignore
-    const signupInput: MemberInput = {
-      memberNick: memberNick,
-      memberPhone: memberPhone,
-      memberPassword: memberPassword,
+  const handleSignupRequest = async () => {
+    try {
+      const isFulfill =
+        memberNick !== "" && memberPhone !== "" && memberPassword !== "";
 
-    };
+      if (!isFulfill) throw new Error(Messages.error3);
 
-    const member = new MemberService();
-    const result = await member.signup(signupInput);
-    setAuthMember(result);
-    handleSignupClose();
-  } catch (err) {
-    console.log(err);
-    handleSignupClose();
-    sweetErrorHandling(err).then()
-  }
-};
+      // @ts-ignore
+      const signupInput: MemberInput = {
+        memberNick: memberNick,
+        memberPhone: memberPhone,
+        memberPassword: memberPassword,
+      };
 
+      const member = new MemberService();
+      const result = await member.signup(signupInput);
+      setAuthMember(result);
+      handleSignupClose();
+    } catch (err) {
+      console.log(err);
+      handleSignupClose();
+      sweetErrorHandling(err).then();
+    }
+  };
 
-const handleLoginRequest = async () => {
-  try {
+  const handleLoginRequest = async () => {
+    try {
+      const isFulfill = memberNick !== "" && memberPassword !== "";
 
-    const isFulfill =
-      memberNick !== "" &&
-      memberPassword !== "";
+      if (!isFulfill) throw new Error(Messages.error3);
 
-    if (!isFulfill) throw new Error(Messages.error3);
-// @ts-ignore
-    const logInput: LoginInput = {
-      memberNick: memberNick,
-      memberPassword: memberPassword,
-    };
+      // @ts-ignore
+      const logInput: LoginInput = {
+        memberNick: memberNick,
+        memberPassword: memberPassword,
+      };
 
-    const member = new MemberService();
-    const result = await member.login(logInput);
-    setAuthMember(result);
-    handleLoginClose();
-  } catch (err) {
-    console.log(err);
-    handleLoginClose();
-    sweetErrorHandling(err).then()
-  }
-};
+      const member = new MemberService();
+      const result = await member.login(logInput);
+      setAuthMember(result);
+      handleLoginClose();
+    } catch (err) {
+      console.log(err);
+      handleLoginClose();
+      sweetErrorHandling(err).then();
+    }
+  };
 
   return (
     <div>
@@ -143,11 +139,21 @@ const handleLoginRequest = async () => {
         <Fade in={signupOpen}>
           <Stack
             className={classes.paper}
-            direction={"row"}
-            sx={{ width: "800px" }}
+            direction={isMobile ? "column" : "row"}
+            sx={{
+              width: isMobile ? "92vw" : "min(800px, 92vw)",
+              maxHeight: "90vh",
+              overflowY: "auto",
+            }}
           >
-            <ModalImg src={"/img/auth.webp"} alt="camera" />
-            <Stack sx={{ marginLeft: "69px", alignItems: "center" }}>
+            {!isMobile && <ModalImg src={"/img/auth.webp"} alt="camera" />}
+            <Stack
+              sx={{
+                marginLeft: isMobile ? 0 : "69px",
+                alignItems: "center",
+                px: isMobile ? 1 : 0,
+              }}
+            >
               <h2>Signup Form</h2>
               <TextField
                 sx={{ marginTop: "7px" }}
@@ -199,15 +205,20 @@ const handleLoginRequest = async () => {
         <Fade in={loginOpen}>
           <Stack
             className={classes.paper}
-            direction={"row"}
-            sx={{ width: "700px" }}
+            direction={isMobile ? "column" : "row"}
+            sx={{
+              width: isMobile ? "92vw" : "min(700px, 92vw)",
+              maxHeight: "90vh",
+              overflowY: "auto",
+            }}
           >
-            <ModalImg src={"/img/auth.webp"} alt="camera" />
+            {!isMobile && <ModalImg src={"/img/auth.webp"} alt="camera" />}
             <Stack
               sx={{
-                marginLeft: "65px",
-                marginTop: "25px",
+                marginLeft: isMobile ? 0 : "65px",
+                marginTop: isMobile ? "5px" : "25px",
                 alignItems: "center",
+                px: isMobile ? 1 : 0,
               }}
             >
               <h2>Login Form</h2>

@@ -24,7 +24,18 @@ interface OtherNavbarProps {
 
 
 export default function OtherNavbar(props: OtherNavbarProps) {
-  const {cartItems, onAdd, onRemove, onDelete, onDeleteAll,  setSignupOpen, setLoginOpen,  handleLogoutClick, anchorEl, handleCloseLogout, handleLogoutRequest} = props;
+  const {
+    cartItems,
+    onAdd,
+    onRemove,
+    onDelete,
+    onDeleteAll,
+    setLoginOpen,
+    handleLogoutClick,
+    anchorEl,
+    handleCloseLogout,
+    handleLogoutRequest,
+  } = props;
      const {authMember} = useGlobals();
     return <div className="other-navbar">
         <Container className="navbar-container">
@@ -76,7 +87,7 @@ onRemove={onRemove} onDelete={onDelete} onDeleteAll={onDeleteAll}
                 // eslint-disable-next-line jsx-a11y/role-supports-aria-props
                 (<img className="user-avatar"
                 src={authMember?.memberImage ? `${serverApi}/${authMember?.memberImage}` : "/icons/default-user.svg"}  alt="user img"
-                aria-haspopup={"true"}
+                role="button"
                 onClick={handleLogoutClick}
                 />)} 
                                   <Menu

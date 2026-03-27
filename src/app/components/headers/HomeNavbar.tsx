@@ -123,7 +123,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                     : "/icons/default-user.svg"
                 }
                 alt="user img"
-                aria-haspopup={"true"}
+                role="button"
                 onClick={handleLogoutClick}
               />
             )}

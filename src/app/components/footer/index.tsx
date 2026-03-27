@@ -2,25 +2,29 @@ import React from "react";
 import { Box, Container, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useGlobals } from "../../hooks/useGlobals";
 
 const Footers = styled.div`
   width: 100%;
-  height: 590px;
+  min-height: 590px;
   display: flex;
   background: #343434;
   background-size: cover;
 `;
 
 export default function Footer() {
-  const authMember = null;
+  const { authMember } = useGlobals();
 
   return (
     <Footers>
       <Container>
-        <Stack flexDirection={"row"} sx={{ mt: "94px" }}>
-          <Stack flexDirection={"column"} style={{ width: "340px" }}>
+        <Stack
+          flexDirection={{ xs: "column", md: "row" }}
+          sx={{ mt: { xs: "40px", md: "94px" }, rowGap: { xs: 4, md: 0 } }}
+        >
+          <Stack flexDirection={"column"} sx={{ width: { xs: "100%", md: "340px" } }}>
             <Box>
-              <img width={"100px"} src={"/icons/burak.svg"} />
+              <img width={"100px"} src={"/icons/burak.svg"} alt="Burak logo" />
             </Box>
             <Box className={"foot-desc-txt"}>
               Focusing on the gourmet Turkish breakfast as well as the youth
@@ -28,13 +32,16 @@ export default function Footer() {
               Burak Gurme creates an illusion with its cuisine.
             </Box>
             <Box className="sns-context">
-              <img src={"/icons/facebook.svg"} />
-              <img src={"/icons/twitter.svg"} />
-              <img src={"/icons/instagram.svg"} />
-              <img src={"/icons/youtube.svg"} />
+              <img src={"/icons/facebook.svg"} alt="Facebook" />
+              <img src={"/icons/twitter.svg"} alt="Twitter" />
+              <img src={"/icons/instagram.svg"} alt="Instagram" />
+              <img src={"/icons/youtube.svg"} alt="YouTube" />
             </Box>
           </Stack>
-          <Stack sx={{ ml: "288px" }} flexDirection={"row"}>
+          <Stack
+            sx={{ ml: { xs: 0, md: "auto" }, gap: { xs: 4, md: 10 } }}
+            flexDirection={{ xs: "column", sm: "row" }}
+          >
             <Stack>
               <Box>
                 <Box className={"foot-category-title"}>Bo'limlar</Box>
@@ -46,7 +53,7 @@ export default function Footer() {
                 </Box>
               </Box>
             </Stack>
-            <Stack sx={{ ml: "100px" }}>
+            <Stack sx={{ ml: { xs: 0, sm: "100px" } }}>
               <Box>
                 <Box className={"foot-category-title"}>Find us</Box>
                 <Box
@@ -78,7 +85,7 @@ export default function Footer() {
         </Stack>
         <Stack
           style={{ border: "1px solid #C5C8C9", width: "100%", opacity: "0.2" }}
-          sx={{ mt: "80px" }}
+          sx={{ mt: { xs: "40px", md: "80px" } }}
         ></Stack>
         <Stack className={"copyright-txt"}>
           © Copyright Devex Global, All rights reserved.

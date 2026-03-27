@@ -42,7 +42,7 @@ export default function OrdersPage() {
         const order = new OrderService();
         order
         .getMyOrders({...orderInquiry, orderStatus: OrderStatus.PAUSE})
-        .then((data) =>{ console.log("PAUSE DATA:", data); setPausedOrders(data)})
+        .then((data) => setPausedOrders(data))
         .catch((err) => console.log(err))
         order
         .getMyOrders({...orderInquiry, orderStatus: OrderStatus.PROCESS})
@@ -92,14 +92,31 @@ export default function OrdersPage() {
                         <Box  className='user-detail'>
 
                         
-                        <Box textAlign={'center'}>
-                            <img className="badge" src={
-                                                  authMember?.memberType === MemberType.RESTAURANT 
-                                                  ? "/icons/restaurant.svg"
-                                                  : "/icons/user-badge.svg"} alt="" />
-                            <img className="user" src={authMember?.memberImage ? `${serverApi}/${authMember.memberImage}` : "icons/default-user.svg"} alt="" /> 
-                        <Typography className="user-name">{authMember?.memberNick}</Typography>
-                        <p className="user-type">{authMember?.memberType}</p>
+                        <Box textAlign={"center"}>
+                          <div className={"order-user-img"}>
+                            <img
+                              className="user"
+                              src={
+                                authMember?.memberImage
+                                  ? `${serverApi}/${authMember.memberImage}`
+                                  : "icons/default-user.svg"
+                              }
+                              alt=""
+                            />
+                            <div className={"order-user-icon-box"}>
+                              <img
+                                className="badge"
+                                src={
+                                  authMember?.memberType === MemberType.RESTAURANT
+                                    ? "/icons/restaurant.svg"
+                                    : "/icons/user-badge.svg"
+                                }
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                          <Typography className="user-name">{authMember?.memberNick}</Typography>
+                          <p className="user-type">{authMember?.memberType}</p>
                         </Box>
                         <Box>
                             <Divider height="1" width="332" bg="#A1A1A1"/>

@@ -1,9 +1,9 @@
 .home-navbar {
-    width: 100%;
-    height: 773px;
-    display: flex;
-    background: url('/public/img/banner.webp');
-    background-size: cover;
+  width: 100%;
+  height: 773px;
+  display: flex;
+  background: url("/img/banner.webp");
+  background-size: cover;
 }
 
 .home-navbar .navbar-container {
@@ -33,8 +33,8 @@
 }
 
 .home-navbar .navbar-container .menu .links .login-button {
-  background: #3776CC; 
-  color: #f8f8ff
+  background: #3776cc;
+  color: #f8f8ff;
 }
 .home-navbar .navbar-container .menu .user-avatar {
   width: 50px;
@@ -173,11 +173,11 @@
 
 
 .other-navbar {
-    width: 100%;
-    height: 400px;
-    display: flex;
-    background: url('/public/img/banner.webp');
-    background-size: cover;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  background: url("/img/banner.webp");
+  background-size: cover;
 }
 
 .other-navbar .navbar-container {
@@ -206,8 +206,8 @@
 }
 
 .other-navbar .navbar-container .menu .links .login-button {
-  background: #3776CC; 
-  color: #f8f8ff
+  background: #3776cc;
+  color: #f8f8ff;
 }
 .other-navbar .navbar-container .menu .user-avatar {
   width: 50px;
@@ -383,4 +383,132 @@
   height: 260px;
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 1200px) {
+  .home-navbar {
+    height: auto;
+    min-height: 640px;
+  }
+
+  .home-navbar .navbar-container .menu .links,
+  .other-navbar .navbar-container .menu .links {
+    min-width: auto;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .home-navbar .navbar-container .header-frame {
+    margin-top: 90px;
+    gap: 24px;
+  }
+
+  .home-navbar .navbar-container .header-frame .detail {
+    width: 50%;
+  }
+
+  .home-navbar .navbar-container .header-frame .detail .head-main-txt,
+  .home-navbar .navbar-container .header-frame .detail .wel-txt {
+    width: 100%;
+  }
+
+  .home-navbar .navbar-container .logo-frame {
+    width: 48%;
+    height: 340px;
+  }
+}
+
+@media (max-width: 992px) {
+  .home-navbar .navbar-container {
+    margin-top: 24px;
+    height: auto;
+  }
+
+  .other-navbar .navbar-container {
+    margin-top: 24px;
+  }
+
+  .home-navbar .navbar-container .menu,
+  .other-navbar .navbar-container .menu {
+    height: auto;
+    gap: 14px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .home-navbar .navbar-container .header-frame {
+    margin-top: 40px;
+    height: auto;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .home-navbar .navbar-container .header-frame .detail,
+  .home-navbar .navbar-container .logo-frame {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .home-navbar .navbar-container .header-frame .detail .head-main-txt {
+    height: auto;
+    font-size: 42px;
+  }
+
+  .home-navbar .navbar-container .header-frame .detail .wel-txt {
+    height: auto;
+    font-size: 30px;
+  }
+
+  .home-navbar .navbar-container .detail .signup {
+    margin-top: 34px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-navbar {
+    min-height: 560px;
+  }
+
+  .other-navbar {
+    height: auto;
+    min-height: 220px;
+  }
+
+  .home-navbar .navbar-container .menu .links,
+  .other-navbar .navbar-container .menu .links {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .home-navbar .navbar-container .header-frame .detail .head-main-txt {
+    font-size: 34px;
+  }
+
+  .home-navbar .navbar-container .header-frame .detail .wel-txt {
+    font-size: 24px;
+  }
+
+  .home-navbar .navbar-container .header-frame .detail .service-txt {
+    font-size: 16px;
+  }
+
+  .home-navbar .navbar-container .detail .signup .signup-button {
+    width: 170px;
+    height: 52px;
+    font-size: 15px;
+  }
+
+  .basket-frame {
+    width: min(92vw, 450px);
+  }
+
+  .basket-info-box .product-name {
+    width: 130px;
+    font-size: 16px;
+  }
+
+  .basket-order .price {
+    font-size: 16px;
+  }
 }

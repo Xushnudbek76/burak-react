@@ -15,12 +15,13 @@ import { serverApi } from "../../../lib/config";
 
 export default function ActiveUsers() {
   const {topUsers} = useSelector(topUsersRetriever);
+  const users = Array.isArray(topUsers) ? topUsers : [];
  return (<div className="active-users-frame"> 
     <Container>
         <Stack className="active-users-section">
          <Box className="category-title">Active Users</Box>
          <Stack   className="cards-frame">
-           { topUsers.length !== 0 ? topUsers.map((e: Member) => {
+           { users.length !== 0 ? users.map((e: Member) => {
             const imagePath = `${serverApi}/${e.memberImage}`;
             return (
                 <CssVarsProvider key={e._id}>
@@ -29,9 +30,9 @@ export default function ActiveUsers() {
                     <img src={imagePath} alt="" />
                   </CardCover>
 
-                    <CardContent sx={{ justifyContent: "center",  mt: '100%', zIndex: 2, background: '#FAFBFB',width: "289px", minHeight: '26px',py:1.5, borderRadius: "0 0 7px 6px"
+                    <CardContent  width={"100%"}  sx={{ justifyContent: "center",  mt: '100%', zIndex: 2, background: '#FAFBFB', minHeight: '26px',py:1.5, borderRadius: "0 0 7px 6px"
                     }}>
-                       <Stack justifyContent={'center'} alignItems={'center'}
+                       <Stack  justifyContent={'center'} alignItems={'center'}
                        >
                        <Typography className="member-nick"  textColor={'#25272D'}  mb={1}>
                         {e.memberNick}

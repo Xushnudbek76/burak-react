@@ -21,13 +21,14 @@ const newDishesRetriever = createSelector(retrieveNewDishes, (newDishes) => ({
 export default function NewDishes() {
   
   const {newDishes} = useSelector(newDishesRetriever);
+  const dishes = Array.isArray(newDishes) ? newDishes : [];
 
  return ( <div className="new-dishes-frame"> 
     <Container>
         <Stack className="new-dishes-section">
          <Box className="category-title">Fresh Menu</Box>
          <Stack   className="cards-frame">
-           { newDishes.length !== 0 ? newDishes.map((ele: Product) => {
+           { dishes.length !== 0 ? dishes.map((ele: Product) => {
             const imagePath = `${serverApi}/${ele.productImages[0]}`;
             const sizeVolume = 
             ele.productCollection === ProductCollection.DRINK

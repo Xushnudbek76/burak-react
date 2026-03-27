@@ -1,4 +1,11 @@
-export const serverApi: string = `${process.env.REACT_APP_API_URL}`;
+const viteEnv = (import.meta as ImportMeta & { env?: Record<string, string> }).env;
+const viteApiUrl = viteEnv?.VITE_API_URL ?? viteEnv?.REACT_APP_API_URL;
+const craApiUrl =
+  typeof process !== "undefined" && process.env
+    ? process.env.REACT_APP_API_URL
+    : undefined;
+
+export const serverApi: string = `${viteApiUrl ?? craApiUrl ?? ""}`;
 
 export const Messages = {
     error1: "Something went wrong",

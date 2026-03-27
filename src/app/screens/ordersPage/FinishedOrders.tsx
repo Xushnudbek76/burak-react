@@ -34,7 +34,7 @@ export default function FinishedOrders () {
                     const imagePath = `${serverApi}/${product.productImages[0]}`;
 
                     return (
-                      <Box key={item.id} className={"orders-name-price"}>
+                      <Box key={item.productId} className={"orders-name-price"}>
                         <Box className="img-name">
                           <img src={imagePath} className={"order-dish-img"} />
                           <p className={"title-dish"}>{product.productName}</p>

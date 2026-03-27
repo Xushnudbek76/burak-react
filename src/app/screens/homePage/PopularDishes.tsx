@@ -24,6 +24,7 @@ import { serverApi } from "../../../lib/config";
 
 export default function PopularDishes() {
   const {popularDishes} = useSelector(popularDishesRetriever);
+  const dishes = Array.isArray(popularDishes) ? popularDishes : [];
  
 return (
     <div className="popular-dishes-frame">
@@ -31,7 +32,7 @@ return (
         <Stack className="popular-section">
           <Box className="category-title">Popular Dishes</Box>
           <Stack className="cards-frame">
-            {popularDishes.length !==0 ? popularDishes.map((ele: Product) => {
+            {dishes.length !==0 ? dishes.map((ele: Product) => {
               const imagePath = `${serverApi}/${ele.productImages[0]}`
               return (
                 <CssVarsProvider key={ele._id}>

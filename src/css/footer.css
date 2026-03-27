@@ -92,3 +92,37 @@
 .foot-category-title:hover:after {
   transform: scaleX(1);
 }
+
+@media (max-width: 992px) {
+  .foot-desc-txt {
+    line-height: 28px;
+  }
+
+  .foot-category-title {
+    font-size: 22px;
+  }
+
+  .find-us div {
+    line-height: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .foot-desc-txt {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .foot-category-link {
+    margin-top: 12px;
+    height: auto;
+    gap: 8px;
+  }
+
+  .find-us span,
+  .find-us div,
+  .copyright-txt {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}

@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export interface IDividerProps {
-	width?: string;
-	height?: string;
-	bg?: string;
+interface IDividerProps {
+  height?: string;
+  width?: string;
+  bg?: string;
+  className?: string; 
 }
-
 const DividerComponent = styled.span<IDividerProps>`
 	display: flex;
 	min-width: ${({ width }) => `${width}px`};
@@ -14,8 +14,17 @@ const DividerComponent = styled.span<IDividerProps>`
 	background: ${({ bg }) => `${bg}`};
 `;
 
-function Divider(props: IDividerProps) {
-	return <DividerComponent {...props} />;
-}
+export default function Divider(props: IDividerProps) {
+  const { height, width, bg, className } = props;
 
-export default Divider;
+  return (
+    <div
+      className={className} 
+      style={{
+        height,
+        width,
+        backgroundColor: bg,
+      }}
+    />
+  );
+}

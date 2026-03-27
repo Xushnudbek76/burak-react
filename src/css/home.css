@@ -398,3 +398,194 @@ vertical-align: middle;
   background: #343434;
   border-radius: 50%;
 }
+
+@media (max-width: 899.98px) {
+  .homepage .static-frame {
+    height: auto;
+    min-height: 0;
+    padding: 28px 16px 32px;
+  }
+
+  .homepage .static-frame .info {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
+    height: auto;
+  }
+
+  .homepage .static-frame .info .stat-divider {
+    display: none;
+  }
+
+  .homepage .static-frame .info .static-box {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    min-height: 0;
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid rgba(227, 192, 141, 0.22);
+  }
+
+  .homepage .static-frame .info .static-box:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .homepage .static-frame .info .static-box .static-num {
+    font-size: clamp(32px, 10vw, 48px);
+    line-height: 1.2;
+  }
+
+  .homepage .static-frame .info .static-box .static-text {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .homepage .popular-dishes-frame,
+  .new-dishes-frame,
+  .active-users-frame {
+    height: auto;
+    min-height: 0;
+    padding-bottom: 40px;
+  }
+
+  .homepage .popular-dishes-frame .popular-section .cards-frame,
+  .homepage .new-dishes-frame .new-dishes-section .cards-frame,
+  .homepage .active-users-frame .active-users-section .cards-frame {
+    flex-wrap: wrap;
+    height: auto;
+    justify-content: center;
+    padding: 0 12px;
+    width: 100%;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .homepage .active-users-frame .active-users-section .cards-frame .card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .homepage .category-title {
+    font-size: clamp(24px, 6vw, 32px);
+    padding: 0 12px;
+  }
+
+  .homepage .ads-restaurant-frame {
+    height: min(50vh, 400px);
+    min-height: 220px;
+  }
+
+  .homepage .ads-restaurant-frame .ads-video {
+    transform: scale(1.05);
+  }
+
+  .homepage .events-frame {
+    height: auto;
+    min-height: 0;
+    padding-bottom: 48px;
+  }
+
+  .homepage .events-frame .events-main .events-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0 12px;
+  }
+
+  .homepage .events-frame .events-info .events-info-frame {
+    width: 100%;
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .homepage .popular-dishes-frame,
+  .new-dishes-frame,
+  .active-users-frame {
+    height: auto;
+    padding-bottom: 36px;
+  }
+
+  .homepage .popular-dishes-frame .popular-section .cards-frame,
+  .homepage .new-dishes-frame .new-dishes-section .cards-frame,
+  .homepage .active-users-frame .active-users-section .cards-frame {
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .homepage .events-frame .events-info {
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .homepage .events-frame .events-info .events-info-frame {
+    width: min(100%, 500px);
+  }
+}
+
+@media (max-width: 992px) {
+  /* .homepage .static-frame {
+    height: auto;
+    padding: 24px 0;
+  }
+
+  .homepage .static-frame .info {
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  } */
+
+  .homepage .category-title {
+    font-size: 30px;
+  }
+
+  .homepage .ads-restaurant-frame {
+    height: 520px;
+  }
+}
+
+@media (max-width: 768px) {
+  .homepage .category-title {
+    font-size: 26px;
+    letter-spacing: 0.3px;
+  }
+
+  /* .homepage .static-frame .info .static-box .static-num {
+    font-size: 42px;
+    line-height: 58px;
+  }
+
+  .homepage .static-frame .info .static-box .static-text {
+    font-size: 16px;
+    line-height: 24px;
+  } */
+
+  .homepage .ads-restaurant-frame {
+    height: 400px;
+  }
+
+  .homepage .ads-restaurant-frame .ads-video {
+    transform: scale(1.1);
+  }
+
+  .homepage .events-frame {
+    height: auto;
+    padding-bottom: 24px;
+  }
+
+  .homepage .events-frame .events-main .events-text {
+    margin-bottom: 20px;
+  }
+
+  .homepage .events-frame .events-main .prev-next-frame {
+    margin: 24px 0;
+  }
+}

@@ -22,6 +22,7 @@ import { Member } from "../../../lib/types/member";
 import { useDispatch, useSelector } from "react-redux";
 import { serverApi } from "../../../lib/config";
 import { CartItem } from "../../../lib/types/search";
+import { sweetTopSmallSuccessAlert } from "../../../lib/sweetAlert";
 
 
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -122,6 +123,7 @@ export default function ChosenProduct(props: ChosenProductProps) {
                                 price: chosenProduct.productPrice,
                                 image: chosenProduct.productImages[0]
                               });
+                              sweetTopSmallSuccessAlert(`${chosenProduct.productName} added to basket`, 900).then();
                               a.stopPropagation();
                             }}
               >Add To Basket</Button>
