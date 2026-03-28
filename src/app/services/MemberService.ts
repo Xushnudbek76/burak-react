@@ -45,17 +45,35 @@ class MemberService {
         }
     } 
     
-    public async login(input: LoginInput): Promise<Member> {
-        try {
-            const url = this.path + "/member/login";
-            const result = await axios.post(url, input, {withCredentials: true});
-            localStorage.setItem("memberData", JSON.stringify(result.data.member))
-            return result.data.member;
-        } catch (error) {
-            console.log("Error, login", error)
-            throw error
-        }
+    // public async login(input: LoginInput): Promise<Member> {
+    //     try {
+    //         const url = this.path + "/member/login";
+    //         const result = await axios.post(url, input, {withCredentials: true});
+    //         localStorage.setItem("memberData", JSON.stringify(result.data.member))
+    //         return result.data.member;
+    //     } catch (error) {
+    //         console.log("Error, login", error)
+    //         throw error
+    //     }
+    // }
+
+public async login(input: LoginInput): Promise<Member> {
+    try {
+        const url = this.path + "/member/login";
+        const result = await axios.post(url, input, { withCredentials: true });
+
+        // Store member data
+        localStorage.setItem("memberData", JSON.stringify(result.data.member));
+
+        // Store JWT token
+        localStorage.setItem("authToken", result.data.accessToken);
+
+        return result.data.member;
+    } catch (error) {
+        console.log("Error, login", error);
+        throw error;
     }
+}
 
     public async logout(): Promise<boolean> {
         try {
